@@ -1,0 +1,65 @@
+# Dependencies
+frontend/node_modules/
+backend/venv/
+backend/__pycache__/
+backend/app/__pycache__/
+backend/app/api/__pycache__/
+backend/app/core/__pycache__/
+backend/app/services/__pycache__/
+
+# Build outputs
+frontend/dist/
+frontend/build/
+
+# Environment files
+backend/.env
+.env
+.env.local
+.env.production
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+*.temp
+
+# Large data files (exclude most of the maps folder)
+maps/
+geojson/
+
+# Keep only essential geojson files
+!frontend/public/geojson/
+
+# Documentation that's not essential
+*.md
+!README.md
+
+# CSV and text files
+*.csv
+*.txt
+!requirements.txt
+
+# PDF files
+*.pdf
+
+# Python scripts that are not part of the app
+format_*.py
+mock_*.py
+test_*.py
+
+# Docker compose (can be included if needed)
+# docker-compose.yml
