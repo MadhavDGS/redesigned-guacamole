@@ -1,6 +1,3 @@
-# FRA Atlas - Smart India Hackathon 2024
-
-A comprehensive Forest Rights Act (FRA) management system with AI-powered features for document processing, satellite mapping, and decision support.
 
 ## Features
 
