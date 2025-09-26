@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  fra-atlas-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=true
+      - SECRET_KEY=dev-secret-key-change-in-production-32-chars
+      - POSTGRES_HOST=db
+      - POSTGRES_DB=fra_atlas_dev
+      - POSTGRES_USER=fra_admin
+      - POSTGRES_PASSWORD=fra_dev_password
+      - ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - ./uploads:/app/uploads
+      - ./models:/app/models
+    restart: unless-stopped
+
+  db:
+    image: postgis/postgis:15-3.3
+    environment:
+      - POSTGRES_DB=fra_atlas_dev
+      - POSTGRES_USER=fra_admin
+      - POSTGRES_PASSWORD=fra_dev_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
